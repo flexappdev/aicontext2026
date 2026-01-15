@@ -3,7 +3,10 @@ AI context2026: Apps (Claude, ChatGPT, Antigravity, AI Studio), Models (GPT 5.2,
 
 ## Cheat
 
-`Dark mode cinematic infographic, following the structure of the video`
+
+```
+Dark mode cinematic infographic, following the structure of the video`
+```
 
 ## workflows 1
 - notebooklm (infogrraphic, slide, video, audio)
