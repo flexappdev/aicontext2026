@@ -1,3 +1,5 @@
+# Sociology
+
 content: 
 - CAD "Introduction to sociology" 
 - CAD "Ssociety and social rules"
