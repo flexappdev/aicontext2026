@@ -8,7 +8,7 @@ _Last updated: 2026-03-16_
 
 | Status | Count |
 |--------|-------|
-| ✅ DONE | 14 |
+| ✅ DONE | 19 |
 | 🔄 WIP | 0 |
 | 📋 DO | 19 |
 
@@ -31,6 +31,11 @@ _Last updated: 2026-03-16_
 | F03 | Sidebar section grouping | groups in content.ts, rendered in App.tsx |
 | F05 | Copy-to-clipboard on code blocks | CopyablePre in MarkdownPanel.tsx |
 | F08 | Recently visited sections (localStorage) | tracked in App.tsx, shown in sidebar |
+| R01 | Add Top 100 AI page | `/ai/top100.md` + content.ts |
+| R02 | Add AI History page | `/ai/ai-history.md` + content.ts |
+| R03 | Add AI Models reference page | `/ai/ai-models-ref.md` + content.ts |
+| R04 | Add AI People page | `/ai/ai-people.md` + content.ts |
+| R05 | Add AI Future page | `/ai/ai-future.md` + content.ts |
 
 ---
 
