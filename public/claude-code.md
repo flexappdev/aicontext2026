@@ -30,9 +30,10 @@ claude --model claude-opus-4-6  # specify model
 ## Skills
 
 ```
-skills/
-  <skill-name>/
-    SKILL.md    ← skill definition (frontmatter + instructions)
+.claude/
+  skills/
+    <skill-name>/
+      SKILL.md    ← skill definition (frontmatter + instructions)
 ```
 
 Invoke: type `/skill-name` in chat, or use the Skill tool in code.

@@ -1,13 +1,14 @@
 # Claude Code Skills
 
-Skills are reusable, invocable workflows stored as markdown in your project's `skills/` directory.
+Skills are reusable, invocable workflows stored as markdown in your project's `.claude/skills/` directory.
 
 ## Structure
 
 ```
-skills/
-  <skill-name>/
-    SKILL.md
+.claude/
+  skills/
+    <skill-name>/
+      SKILL.md
 ```
 
 ## SKILL.md Format

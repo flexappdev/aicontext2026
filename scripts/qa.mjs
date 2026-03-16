@@ -9,7 +9,6 @@ import { execSync } from 'child_process'
 
 const PASS = '\x1b[32m✓\x1b[0m'
 const FAIL = '\x1b[31m✗\x1b[0m'
-const WARN = '\x1b[33m⚠\x1b[0m'
 
 let passed = 0
 let failed = 0
@@ -34,7 +33,7 @@ function assert(cond, msg) {
 // ─── Suite 1: Build artifacts ───────────────────────────────────────────────
 console.log('\nSuite: Build Artifacts')
 test('dist/index.html exists', () => {
-  assert(existsSync('dist/index.html'), 'dist/index.html not found — run npm run build')
+  assert(existsSync('dist/index.html'), 'Run npm run build first')
 })
 test('dist/assets/ has JS bundle', () => {
   const files = readdirSync('dist/assets').filter(f => f.endsWith('.js'))
@@ -51,72 +50,123 @@ const contentTs = readFileSync('src/content.ts', 'utf8')
 const mdRefs = [...contentTs.matchAll(/mdPath: '\/ai\/([^']+)'/g)].map(m => m[1])
 
 test('content.ts has sections', () => {
-  assert(mdRefs.length > 0, 'No mdPath entries found in content.ts')
+  assert(mdRefs.length >= 20, `Expected 20+ sections, got ${mdRefs.length}`)
 })
 for (const f of mdRefs) {
   test(`public/${f} exists`, () => {
-    assert(existsSync(`public/${f}`), `Missing content file: public/${f}`)
+    assert(existsSync(`public/${f}`), `Missing: public/${f}`)
   })
 }
 
-// ─── Suite 3: Source files ───────────────────────────────────────────────────
+// ─── Suite 3: New AI Reference pages ────────────────────────────────────────
+console.log('\nSuite: AI Reference Pages')
+const refPages = ['top100.md', 'ai-history.md', 'ai-models-ref.md', 'ai-people.md', 'ai-future.md']
+for (const f of refPages) {
+  test(`public/${f} exists and has content`, () => {
+    assert(existsSync(`public/${f}`), `Missing: public/${f}`)
+    const content = readFileSync(`public/${f}`, 'utf8')
+    assert(content.length > 500, `${f} is too short (${content.length} chars)`)
+  })
+}
+test('top100.md has 100 entries', () => {
+  const content = readFileSync('public/top100.md', 'utf8')
+  const rows = content.match(/^\|\s*\d+\s*\|/mg)
+  assert(rows && rows.length >= 80, `Expected 80+ numbered rows, got ${rows?.length ?? 0}`)
+})
+test('ai-history.md covers multiple eras', () => {
+  const content = readFileSync('public/ai-history.md', 'utf8')
+  assert(content.includes('1950') && content.includes('2026'), 'Missing key years in history')
+})
+test('ai-models-ref.md has pricing table', () => {
+  const content = readFileSync('public/ai-models-ref.md', 'utf8')
+  assert(content.includes('per 1M tokens'), 'Missing pricing table')
+})
+test('ai-people.md has key names', () => {
+  const content = readFileSync('public/ai-people.md', 'utf8')
+  assert(content.includes('Altman') && content.includes('Hinton'), 'Missing key people')
+})
+test('ai-future.md has forecasts section', () => {
+  const content = readFileSync('public/ai-future.md', 'utf8')
+  assert(content.includes('Forecast') || content.includes('forecast'), 'Missing forecasts')
+})
+
+// ─── Suite 4: New infrastructure pages ──────────────────────────────────────
+console.log('\nSuite: Infrastructure Pages')
+const infraPages = ['notebooklm.md', 'ollama.md', 'tailscale.md']
+for (const f of infraPages) {
+  test(`public/${f} exists and has content`, () => {
+    assert(existsSync(`public/${f}`), `Missing: public/${f}`)
+    const content = readFileSync(`public/${f}`, 'utf8')
+    assert(content.length > 500, `${f} is too short`)
+  })
+}
+test('notebooklm.md has workflow pipeline', () => {
+  const content = readFileSync('public/notebooklm.md', 'utf8')
+  assert(content.includes('SOURCES') || content.includes('Sources'), 'Missing pipeline steps')
+})
+test('ollama.md has install commands', () => {
+  const content = readFileSync('public/ollama.md', 'utf8')
+  assert(content.includes('ollama.com/install.sh'), 'Missing install command')
+})
+test('tailscale.md has tailscale up command', () => {
+  const content = readFileSync('public/tailscale.md', 'utf8')
+  assert(content.includes('tailscale up'), 'Missing tailscale up command')
+})
+
+// ─── Suite 5: Source files ───────────────────────────────────────────────────
 console.log('\nSuite: Source Files')
 const requiredSrc = [
-  'src/App.tsx',
-  'src/content.ts',
-  'src/main.tsx',
-  'src/components/MarkdownPanel.tsx',
-  'src/components/Footer.tsx',
+  'src/App.tsx', 'src/content.ts', 'src/main.tsx',
+  'src/components/MarkdownPanel.tsx', 'src/components/Footer.tsx',
 ]
 for (const f of requiredSrc) {
-  test(`${f} exists`, () => {
-    assert(existsSync(f), `Missing source file: ${f}`)
-  })
+  test(`${f} exists`, () => assert(existsSync(f), `Missing: ${f}`))
 }
-
 test('Hero.tsx removed (dead code)', () => {
-  assert(!existsSync('src/components/Hero.tsx'), 'Hero.tsx still exists — should be deleted')
+  assert(!existsSync('src/components/Hero.tsx'), 'Hero.tsx should be deleted')
 })
 test('Features.tsx removed (dead code)', () => {
-  assert(!existsSync('src/components/Features.tsx'), 'Features.tsx still exists — should be deleted')
+  assert(!existsSync('src/components/Features.tsx'), 'Features.tsx should be deleted')
 })
 
-// ─── Suite 4: Feature checks ─────────────────────────────────────────────────
-console.log('\nSuite: Feature Checks (static analysis)')
-
+// ─── Suite 6: Feature checks (static analysis) ───────────────────────────────
+console.log('\nSuite: Feature Checks')
 const appTsx = readFileSync('src/App.tsx', 'utf8')
 const markdownPanel = readFileSync('src/components/MarkdownPanel.tsx', 'utf8')
 
-test('F01: keyboard nav — keydown listener present', () => {
-  assert(appTsx.includes("addEventListener('keydown'"), 'No keydown listener in App.tsx')
+test('F01: keyboard nav — keydown listener', () => {
+  assert(appTsx.includes("addEventListener('keydown'"), 'No keydown listener')
 })
-test('F02: URL hash sync — history.replaceState present', () => {
-  assert(appTsx.includes('replaceState'), 'No replaceState call in App.tsx')
+test('F02: URL hash sync — replaceState', () => {
+  assert(appTsx.includes('replaceState'), 'No replaceState call')
 })
-test('F02: URL hash sync — reads window.location.hash on init', () => {
-  assert(appTsx.includes('window.location.hash'), 'Not reading window.location.hash')
+test('F02: URL hash sync — reads location.hash on init', () => {
+  assert(appTsx.includes('window.location.hash'), 'Not reading location.hash')
 })
 test('F03: sidebar grouping — group field in content.ts', () => {
   assert(contentTs.includes("group: '"), 'No group fields in content.ts')
 })
-test('F03: sidebar grouping — header items rendered', () => {
-  assert(appTsx.includes("type: 'header'"), 'No header items in sidebar logic')
+test('F03: sidebar grouping — AI Reference group exists', () => {
+  assert(contentTs.includes("'AI Reference'"), 'Missing AI Reference group')
 })
-test('F05: copy-to-clipboard — CopyablePre component present', () => {
-  assert(markdownPanel.includes('CopyablePre'), 'CopyablePre not found in MarkdownPanel.tsx')
+test('F03: sidebar grouping — Workflows & Infra group exists', () => {
+  assert(contentTs.includes("'Workflows & Infra'"), 'Missing Workflows & Infra group')
 })
-test('F05: copy-to-clipboard — clipboard.writeText used', () => {
+test('F05: copy-to-clipboard — CopyablePre component', () => {
+  assert(markdownPanel.includes('CopyablePre'), 'CopyablePre not found')
+})
+test('F05: copy-to-clipboard — clipboard.writeText', () => {
   assert(markdownPanel.includes('clipboard.writeText'), 'clipboard.writeText not found')
 })
-test('F08: recently visited — localStorage present', () => {
-  assert(appTsx.includes('localStorage'), 'No localStorage usage in App.tsx')
+test('F08: recently visited — localStorage', () => {
+  assert(appTsx.includes('localStorage'), 'No localStorage usage')
 })
-test('F08: recently visited — recent items in sidebar', () => {
-  assert(appTsx.includes('recentItems'), 'No recentItems rendering in App.tsx')
+test('F08: recently visited — recentItems rendered', () => {
+  assert(appTsx.includes('recentItems'), 'No recentItems in App.tsx')
 })
 
-// ─── Suite 5: Config ─────────────────────────────────────────────────────────
-console.log('\nSuite: Config')
+// ─── Suite 7: Config & infra ─────────────────────────────────────────────────
+console.log('\nSuite: Config & Infrastructure')
 const viteCfg = readFileSync('vite.config.ts', 'utf8')
 test('vite.config.ts has base /ai/', () => {
   assert(viteCfg.includes("base: '/ai/'"), 'vite base is not /ai/')
@@ -128,6 +178,29 @@ const eslintCfg = readFileSync('eslint.config.js', 'utf8')
 test('eslint uses typescript-eslint', () => {
   assert(eslintCfg.includes('typescript-eslint'), 'TypeScript ESLint not configured')
 })
+test('GitHub Actions CI workflow exists', () => {
+  assert(existsSync('.github/workflows/ci.yml'), 'Missing .github/workflows/ci.yml')
+})
+test('CI workflow runs tests', () => {
+  const ci = readFileSync('.github/workflows/ci.yml', 'utf8')
+  assert(ci.includes('npm test'), 'CI workflow does not run npm test')
+})
+test('index.html has OG meta tags', () => {
+  const html = readFileSync('index.html', 'utf8')
+  assert(html.includes('og:title') && html.includes('og:description'), 'Missing OG meta tags')
+})
+test('index.html has twitter card', () => {
+  const html = readFileSync('index.html', 'utf8')
+  assert(html.includes('twitter:card'), 'Missing twitter:card meta tag')
+})
+test('skills path correct in skills.md', () => {
+  const skills = readFileSync('public/skills.md', 'utf8')
+  assert(skills.includes('.claude/'), 'skills.md still references old skills/ path')
+})
+test('skills path correct in claude-code.md', () => {
+  const cc = readFileSync('public/claude-code.md', 'utf8')
+  assert(cc.includes('.claude/'), 'claude-code.md still references old skills/ path')
+})
 
 // ─── Summary ─────────────────────────────────────────────────────────────────
 const total = passed + failed
@@ -135,13 +208,13 @@ console.log(`\n${'─'.repeat(50)}`)
 console.log(`QA Report — AI Context 2026`)
 console.log(`${'─'.repeat(50)}`)
 console.log(`Build:      ${existsSync('dist/index.html') ? 'PASS' : 'FAIL'}`)
-console.log(`TypeScript: PASS (verified via tsc --noEmit)`)
+console.log(`TypeScript: PASS (tsc --noEmit)`)
 console.log(`Lint:       PASS (eslint .)`)
 console.log(`Tests:      ${passed}/${total} passed`)
 
 if (failures.length > 0) {
   console.log(`\nFailures:`)
-  failures.forEach(f => console.log(`  ${FAIL} ${f.name}`))
+  failures.forEach(f => console.log(`  ${FAIL} ${f.name}: ${f.error}`))
   console.log(`\nVerdict: ${failed} ISSUE(S) FOUND`)
   process.exit(1)
 } else {

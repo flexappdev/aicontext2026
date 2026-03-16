@@ -6,36 +6,51 @@ _Last updated: 2026-03-16_
 
 ## Summary
 
-| Status | Count |
-|--------|-------|
-| ✅ DONE | 19 |
-| 🔄 WIP | 0 |
-| 📋 DO | 19 |
+| Status | Count | SP Done | SP Remaining |
+|--------|-------|---------|-------------|
+| ✅ DONE | 24 | 38 | — |
+| 🔄 WIP | 0 | — | — |
+| 📋 DO | 14 | — | 27 |
 
 ---
 
 ## ✅ DONE
 
-| ID | Section / Feature | Notes |
-|----|-------------------|-------|
-| S01 | Overview section (inline bullets) | Live in content.ts |
-| S07 | MCP: Playwright page | `/ai/playwright-mcp.md` live |
-| S08 | MCP: Firecrawl page | `/ai/firecrawl-mcp.md` live |
-| F00 | Remove Hero.tsx / Features.tsx dead code | Done 2026-03-16 |
-| P01 | Add Subagents page | `/ai/subagents.md` + content.ts |
-| P02 | Add Hooks page | `/ai/hooks.md` + content.ts |
-| P03 | Add CLAUDE.md page | `/ai/claude-md.md` + content.ts |
-| P04 | Add Memory page | `/ai/memory.md` + content.ts |
-| F01 | Keyboard nav (j/k / arrow keys) | keydown listener in App.tsx |
-| F02 | URL hash sync (`#section-id`) | window.history.replaceState on active change |
-| F03 | Sidebar section grouping | groups in content.ts, rendered in App.tsx |
-| F05 | Copy-to-clipboard on code blocks | CopyablePre in MarkdownPanel.tsx |
-| F08 | Recently visited sections (localStorage) | tracked in App.tsx, shown in sidebar |
-| R01 | Add Top 100 AI page | `/ai/top100.md` + content.ts |
-| R02 | Add AI History page | `/ai/ai-history.md` + content.ts |
-| R03 | Add AI Models reference page | `/ai/ai-models-ref.md` + content.ts |
-| R04 | Add AI People page | `/ai/ai-people.md` + content.ts |
-| R05 | Add AI Future page | `/ai/ai-future.md` + content.ts |
+| ID | Section / Feature | Effort | SP | Priority | Notes |
+|----|-------------------|--------|----|----------|-------|
+| S01 | Overview section (inline bullets) | S | 1 | high | Live in content.ts |
+| S07 | MCP: Playwright page | M | 2 | high | `/ai/playwright-mcp.md` live |
+| S08 | MCP: Firecrawl page | M | 2 | high | `/ai/firecrawl-mcp.md` live |
+| F00 | Remove Hero.tsx / Features.tsx dead code | S | 1 | high | 2026-03-16 |
+| P01 | Add Subagents page | M | 2 | high | `/ai/subagents.md` |
+| P02 | Add Hooks page | M | 2 | high | `/ai/hooks.md` |
+| P03 | Add CLAUDE.md page | M | 2 | high | `/ai/claude-md.md` |
+| P04 | Add Memory page | M | 2 | high | `/ai/memory.md` |
+| F01 | Keyboard nav (j/k / arrow keys) | M | 2 | medium | keydown in App.tsx |
+| F02 | URL hash sync (`#section-id`) | M | 2 | medium | replaceState on nav |
+| F03 | Sidebar section grouping | M | 2 | medium | groups in content.ts |
+| F05 | Copy-to-clipboard on code blocks | S | 1 | medium | CopyablePre component |
+| F08 | Recently visited sections | S | 1 | medium | localStorage in App.tsx |
+| R01 | Top 100 AI page | L | 3 | high | `/ai/top100.md` |
+| R02 | AI History page | L | 3 | medium | `/ai/ai-history.md` |
+| R03 | AI Models reference page | L | 3 | high | `/ai/ai-models-ref.md` |
+| R04 | AI People page | M | 2 | medium | `/ai/ai-people.md` |
+| R05 | AI Future page | M | 2 | medium | `/ai/ai-future.md` |
+| C03 | Claude Code content review | S | 1 | low | Content verified accurate |
+| C06 | MCPs content review | S | 1 | low | Content verified accurate |
+| C07 | Workflows content review | S | 1 | low | Content verified accurate |
+| C08 | Infrastructure content review | S | 1 | low | Content verified accurate |
+| C09 | 2026 ABC Goal content review | S | 1 | low | Content verified accurate |
+| B03 | Confirm vite.config.ts base `/ai/` | S | 1 | low | Confirmed ✓ |
+| P05 | NotebookLM page | M | 2 | high | `/ai/notebooklm.md` |
+| P06 | Ollama page | M | 2 | medium | `/ai/ollama.md` |
+| P07 | Tailscale page | S | 1 | medium | `/ai/tailscale.md` |
+| I01 | CI/CD — GitHub Actions | M | 2 | high | `.github/workflows/ci.yml` |
+| I03 | Meta tags / SEO | S | 1 | medium | index.html |
+| C01 | AI Apps content review | S | 1 | medium | Expanded with more apps |
+| C02 | Models content review | S | 1 | medium | Verified current |
+| C04 | Open Claw content review | S | 1 | medium | Verified accurate |
+| C05 | Skills content review | S | 1 | medium | Fixed path (.claude/skills/) |
 
 ---
 
@@ -47,74 +62,56 @@ _(none)_
 
 ## 📋 DO
 
-### Content Review — existing pages
-
-| ID | Section | File | Skill |
-|----|---------|------|-------|
-| C01 | AI Apps | `public/ai-apps.md` | content |
-| C02 | Models | `public/models.md` | content |
-| C03 | Claude Code | `public/claude-code.md` | content |
-| C04 | Open Claw | `public/openclaw.md` | content |
-| C05 | Skills | `public/skills.md` | content |
-| C06 | MCPs | `public/mcps.md` | content |
-| C07 | Workflows | `public/workflows.md` | content |
-| C08 | Infrastructure | `public/infrastructure.md` | content |
-| C09 | 2026 ABC Goal | `public/abc-goal.md` | content |
-
-### New Pages to Add
-
-| ID | Page | Description | Skill | Effort | SP |
-|----|------|-------------|-------|--------|----|
-| P05 | NotebookLM | sources → video → infographic → blog → slide → YouTube | `/add` | M | 2 |
-| P06 | Ollama | local model runner, model list, Open Claw integration | `/add` | M | 2 |
-| P07 | Tailscale | private network, connecting WSL / Mac / server | `/add` | S | 1 |
-| P08 | Sociology | port `sociology/` markdown content into app | `/add` | M | 2 |
-
 ### Features — Navigation & UX
 
-| ID | Feature | Skill | Effort | SP |
-|----|---------|-------|--------|----|
-| F01 | Keyboard nav (j/k or arrow keys between sections) | `/component` | M | 2 |
-| F02 | URL hash sync (`/ai/#claude-code`) | `/component` | M | 2 |
-| F03 | Sidebar section tags/grouping (Apps, Tools, Infra, Workflows) | `/component` | M | 2 |
-| F04 | Mobile bottom nav or drawer for sidebar | `/component` | L | 3 |
-| F05 | Copy-to-clipboard on code blocks in markdown | `/component` | S | 1 |
+| ID | Feature | Effort | SP | Priority | Skill |
+|----|---------|--------|----|----------|-------|
+| F04 | Mobile bottom nav / drawer for sidebar | L | 3 | medium | `/component` |
+| F07 | Full-text search across markdown content | L | 3 | high | `/feature` |
 
 ### Features — App
 
-| ID | Feature | Skill | Effort | SP |
-|----|---------|-------|--------|----|
-| F06 | Dark/light mode toggle | `/component` | M | 2 |
-| F07 | Full-text search across all markdown content | `/feature` | L | 3 |
-| F08 | Recently visited sections (localStorage) | `/component` | S | 1 |
-| F09 | Print / PDF export of a section | `/component` | M | 2 |
-| F10 | Version badges / last-updated dates per section | `/component` | M | 2 |
-| F11 | External links section per page | content | S | 1 |
-| F12 | Quick-reference cheat card format (collapsible bullets) | `/component` | M | 2 |
+| ID | Feature | Effort | SP | Priority | Skill |
+|----|---------|--------|----|----------|-------|
+| F06 | Dark/light mode toggle | M | 2 | low | `/component` |
+| F09 | Print / PDF export of a section | M | 2 | low | `/component` |
+| F10 | Version badges / last-updated dates | M | 2 | low | `/component` |
+| F11 | External links section per page | S | 1 | low | content |
+| F12 | Quick-reference cheat card (collapsible) | M | 2 | low | `/component` |
+
+### New Pages
+
+| ID | Page | Effort | SP | Priority | Skill |
+|----|------|--------|----|----------|-------|
+| P08 | Sociology — port `sociology/` markdown | M | 2 | low | `/add` |
 
 ### Infrastructure
 
-| ID | Item | Skill | Effort | SP |
-|----|------|-------|--------|----|
-| I01 | CI/CD — GitHub Actions → build → deploy | `/deploy` | M | 2 |
-| I02 | Sociology route (`public/sociology/`) | `/add` | S | 1 |
-| I03 | `sitemap.xml` / meta tags for SEO | `/scaffold` | S | 1 |
+| ID | Item | Effort | SP | Priority | Skill |
+|----|------|--------|----|----------|-------|
+| I02 | Sociology route (`public/sociology/`) | S | 1 | low | `/add` |
 
-### Bugs
+### Workflows to Document
 
-| ID | Bug | Skill | Effort |
-|----|-----|-------|--------|
-| B03 | Confirm `vite.config.ts` base `/ai/` matches prod path | `/deploy` | S |
-| B04 | Commit `.gitignore` / `vite.config.ts` line-ending changes | git | S |
+| ID | Workflow | Effort | SP | Priority |
+|----|----------|--------|----|----------|
+| W01 | NotebookLM pipeline | M | 2 | high |
+| W02 | VAD (Video a Day) | M | 2 | medium |
+| W03 | AAD (App a Day) | M | 2 | medium |
+| W04 | AIS (Accounts) | S | 1 | low |
+| W05 | PG (Prod Game) | M | 2 | medium |
 
 ---
 
-## Workflows to Document
+## SP Summary
 
-| ID | Workflow | Description |
-|----|----------|-------------|
-| W01 | NotebookLM | sources → video → infographic → blog → slide → YouTube |
-| W02 | VAD (Video a Day) | mscore / mslists / mstravel pipeline |
-| W03 | AAD (App a Day) | daily app scaffold workflow |
-| W04 | AIS (Accounts) | account/credential management |
-| W05 | PG (Prod Game) | full PG system workflow |
+| Group | Items | SP |
+|-------|-------|-----|
+| AI Reference pages (R) | 5 | 13 |
+| Core CC pages (P) | 4 | 8 |
+| UX features (F) | 8 | 12 |
+| Content reviews (C) | 9 | 9 |
+| Infrastructure (I) | 3 | 4 |
+| Bugs (B) | 2 | 2 |
+| **Total done** | **24+** | **38** |
+| **Remaining** | **14** | **27** |
