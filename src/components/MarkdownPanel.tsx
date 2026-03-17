@@ -28,7 +28,7 @@ function CopyablePre({ children, ...props }: React.ComponentPropsWithoutRef<'pre
   )
 }
 
-export function MarkdownPanel({ mdPath }: { mdPath: string }) {
+export function MarkdownPanel({ mdPath, light }: { mdPath: string; light?: boolean }) {
   const [md, setMd] = useState<string>('')
   const [err, setErr] = useState<string | null>(null)
 
@@ -56,7 +56,7 @@ export function MarkdownPanel({ mdPath }: { mdPath: string }) {
   }
 
   return (
-    <div className="prose prose-invert max-w-none prose-a:text-green-300 prose-code:text-green-200">
+    <div className={`prose max-w-none ${light ? 'prose-slate prose-a:text-green-700 prose-code:text-green-700' : 'prose-invert prose-a:text-green-300 prose-code:text-green-200'}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{ pre: CopyablePre }}

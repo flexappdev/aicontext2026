@@ -8,9 +8,9 @@ _Last updated: 2026-03-17_
 
 | Status | Count | SP |
 |--------|-------|-----|
-| ✅ DONE | 48 | 74 |
+| ✅ DONE | 51 | 80 |
 | 🔄 WIP | 0 | — |
-| 📋 DO | 3 | 6 |
+| 📋 DO | 0 | — |
 
 ---
 
@@ -62,6 +62,9 @@ _Last updated: 2026-03-17_
 | W04 | AIS workflow docs | S | 1 | low | In workflows.md (Workflow 4: AIS) |
 | W05 | PG workflow docs | M | 2 | medium | In workflows.md (Workflow 5: PG) |
 | P08 | Sociology — port markdown | M | 2 | low | 5 sections in Sociology group |
+| F06 | Dark/light mode toggle | M | 2 | low | Sun/Moon toggle, CSS vars, localStorage |
+| F09 | Print / PDF export | M | 2 | low | Printer button + @media print CSS |
+| F12 | Collapsible cheat card format | M | 2 | low | Quick-ref toggle (bullets-only mode) |
 
 ---
 
@@ -73,19 +76,10 @@ _(none)_
 
 ## 📋 DO
 
-### Low Priority
-
-| ID | Feature | Effort | SP | Skill | Notes |
-|----|---------|--------|----|-------|-------|
-| F06 | Dark/light mode toggle | M | 2 | `/component` | Already dark, toggle optional |
-| F09 | Print / PDF export | M | 2 | `/component` | Nice to have |
-| F12 | Collapsible cheat card format | M | 2 | `/component` | Quick-ref mode |
+_(none — backlog complete!)_
 
 ---
 
-## Remaining SP by Priority
+## Remaining SP
 
-| Priority | Items | SP |
-|----------|-------|----|
-| Low | F06, F09, F12 | 6 |
-| **Total remaining** | **3** | **6** |
+**0 SP remaining. All items shipped.** 🎉

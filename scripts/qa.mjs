@@ -201,6 +201,35 @@ test('F04: mobile drawer — Menu icon imported', () => {
 test('F04: mobile drawer — drawer overlay rendered', () => {
   assert(appTsx.includes('fixed inset-0'), 'No drawer overlay in App.tsx')
 })
+test('F06: theme toggle — theme state in App.tsx', () => {
+  assert(appTsx.includes('theme') && appTsx.includes('setTheme'), 'No theme state in App.tsx')
+})
+test('F06: theme toggle — Sun/Moon icons imported', () => {
+  assert(appTsx.includes('Sun') && appTsx.includes('Moon'), 'Missing Sun/Moon icons')
+})
+test('F06: theme toggle — data-theme applied to documentElement', () => {
+  assert(appTsx.includes('documentElement') && appTsx.includes('dataset.theme'), 'Not applying data-theme to root')
+})
+test('F06: theme toggle — CSS variables defined in index.css', () => {
+  const css = readFileSync('src/index.css', 'utf8')
+  assert(css.includes('--c-bg') && css.includes('data-theme="light"'), 'Missing CSS variable tokens')
+})
+test('F09: print export — Printer icon imported', () => {
+  assert(appTsx.includes('Printer'), 'No Printer icon in App.tsx')
+})
+test('F09: print export — window.print() call', () => {
+  assert(appTsx.includes('window.print()'), 'No window.print() in App.tsx')
+})
+test('F09: print export — @media print CSS', () => {
+  const css = readFileSync('src/index.css', 'utf8')
+  assert(css.includes('@media print'), 'No @media print in index.css')
+})
+test('F12: quick-ref mode — quickRef state in App.tsx', () => {
+  assert(appTsx.includes('quickRef') && appTsx.includes('setQuickRef'), 'No quickRef state')
+})
+test('F12: quick-ref mode — BookOpen icon imported', () => {
+  assert(appTsx.includes('BookOpen'), 'No BookOpen icon in App.tsx')
+})
 test('F10: version badges — lastUpdated field in CheatSection type', () => {
   assert(contentTs.includes('lastUpdated'), 'No lastUpdated field in content.ts')
 })
