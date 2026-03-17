@@ -8,9 +8,9 @@ _Last updated: 2026-03-17_
 
 | Status | Count | SP |
 |--------|-------|-----|
-| ✅ DONE | 34 | 54 |
+| ✅ DONE | 48 | 74 |
 | 🔄 WIP | 0 | — |
-| 📋 DO | 13 | 27 |
+| 📋 DO | 3 | 6 |
 
 ---
 
@@ -37,8 +37,13 @@ _Last updated: 2026-03-17_
 | F01 | Keyboard nav (j/k / arrows) | M | 2 | medium | keydown in App.tsx |
 | F02 | URL hash sync (`#section-id`) | M | 2 | medium | replaceState on nav |
 | F03 | Sidebar section grouping | M | 2 | medium | groups in content.ts |
+| F04 | Mobile bottom nav / drawer | L | 3 | medium | drawerOpen + overlay in App.tsx |
 | F05 | Copy-to-clipboard on code blocks | S | 1 | medium | CopyablePre in MarkdownPanel |
+| F07 | Full-text search across markdown | L | 3 | high | useSearchIndex hook + App.tsx |
 | F08 | Recently visited sections | S | 1 | medium | localStorage in App.tsx |
+| F10 | Version badges / last-updated dates | M | 2 | low | lastUpdated field + rendered in App.tsx |
+| F11 | External links per page | S | 1 | low | links field + chip links in App.tsx |
+| C01 | AI Apps — expand content | S | 1 | high | Rewritten with image/video/audio/dev sections |
 | C03 | Claude Code — verified & path fix | S | 1 | medium | `.claude/skills/` path corrected |
 | C05 | Skills — path fix | S | 1 | medium | `.claude/skills/` path corrected |
 | C06 | MCPs — verified accurate | S | 1 | low | No changes needed |
@@ -52,6 +57,11 @@ _Last updated: 2026-03-17_
 | B03 | vite.config.ts base `/ai/` confirmed | S | 1 | low | Verified ✓ |
 | B04 | `.gitignore` — add node_modules/dist | S | 1 | medium | Fixed 2026-03-17 |
 | W01 | NotebookLM workflow docs | M | 2 | high | Covered by P05 notebooklm.md |
+| W02 | VAD workflow docs | M | 2 | medium | In workflows.md (Workflow 2: VAD) |
+| W03 | AAD workflow docs | M | 2 | medium | In workflows.md (Workflow 3: AAD) |
+| W04 | AIS workflow docs | S | 1 | low | In workflows.md (Workflow 4: AIS) |
+| W05 | PG workflow docs | M | 2 | medium | In workflows.md (Workflow 5: PG) |
+| P08 | Sociology — port markdown | M | 2 | low | 5 sections in Sociology group |
 
 ---
 
@@ -63,33 +73,13 @@ _(none)_
 
 ## 📋 DO
 
-### High Priority
-
-| ID | Feature | Effort | SP | Skill | Notes |
-|----|---------|--------|----|-------|-------|
-| F07 | Full-text search across markdown | L | 3 | `/feature` | Search all .md content, not just titles |
-| C01 | AI Apps — expand content | S | 1 | content | Add more apps, update descriptions |
-
-### Medium Priority
-
-| ID | Feature | Effort | SP | Skill | Notes |
-|----|---------|--------|----|-------|-------|
-| F04 | Mobile bottom nav / drawer | L | 3 | `/component` | Sidebar unusable on mobile currently |
-| W02 | VAD workflow docs | M | 2 | content | Video a Day pipeline |
-| W03 | AAD workflow docs | M | 2 | content | App a Day pipeline |
-| W05 | PG workflow docs | M | 2 | content | Prod Game full cycle |
-
 ### Low Priority
 
 | ID | Feature | Effort | SP | Skill | Notes |
 |----|---------|--------|----|-------|-------|
 | F06 | Dark/light mode toggle | M | 2 | `/component` | Already dark, toggle optional |
 | F09 | Print / PDF export | M | 2 | `/component` | Nice to have |
-| F10 | Version badges / last-updated dates | M | 2 | `/component` | Per-section freshness indicator |
-| F11 | External links per page | S | 1 | content | Docs, GitHub, official sites |
 | F12 | Collapsible cheat card format | M | 2 | `/component` | Quick-ref mode |
-| P08 | Sociology — port markdown | M | 2 | `/add` | Port `sociology/` into app |
-| W04 | AIS workflow docs | S | 1 | content | Accounts / API key management |
 
 ---
 
@@ -97,7 +87,5 @@ _(none)_
 
 | Priority | Items | SP |
 |----------|-------|----|
-| High | F07, C01 | 4 |
-| Medium | F04, W02, W03, W05 | 9 |
-| Low | F06, F09, F10, F11, F12, P08, W04 | 12 |
-| **Total remaining** | **13** | **27** |
+| Low | F06, F09, F12 | 6 |
+| **Total remaining** | **3** | **6** |

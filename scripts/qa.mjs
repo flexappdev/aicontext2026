@@ -90,6 +90,25 @@ test('ai-future.md has forecasts section', () => {
   assert(content.includes('Forecast') || content.includes('forecast'), 'Missing forecasts')
 })
 
+// ─── Suite 3b: Sociology pages ───────────────────────────────────────────────
+console.log('\nSuite: Sociology Pages')
+const sociologyPages = ['sociology-intro.md', 'sociology-society.md', 'sociology-socialization.md', 'sociology-groups.md', 'sociology-culture.md']
+for (const f of sociologyPages) {
+  test(`public/${f} exists and has content`, () => {
+    assert(existsSync(`public/${f}`), `Missing: public/${f}`)
+    const content = readFileSync(`public/${f}`, 'utf8')
+    assert(content.length > 500, `${f} is too short (${content.length} chars)`)
+  })
+}
+test('sociology-intro.md covers sociological imagination', () => {
+  const content = readFileSync('public/sociology-intro.md', 'utf8')
+  assert(content.includes('sociological') || content.includes('Sociology'), 'Missing sociology content')
+})
+test('sociology-culture.md covers culture and identity', () => {
+  const content = readFileSync('public/sociology-culture.md', 'utf8')
+  assert(content.includes('culture') || content.includes('Culture'), 'Missing culture content')
+})
+
 // ─── Suite 4: New infrastructure pages ──────────────────────────────────────
 console.log('\nSuite: Infrastructure Pages')
 const infraPages = ['notebooklm.md', 'ollama.md', 'tailscale.md']
@@ -181,6 +200,21 @@ test('F04: mobile drawer — Menu icon imported', () => {
 })
 test('F04: mobile drawer — drawer overlay rendered', () => {
   assert(appTsx.includes('fixed inset-0'), 'No drawer overlay in App.tsx')
+})
+test('F10: version badges — lastUpdated field in CheatSection type', () => {
+  assert(contentTs.includes('lastUpdated'), 'No lastUpdated field in content.ts')
+})
+test('F10: version badges — rendered in App.tsx', () => {
+  assert(appTsx.includes('lastUpdated'), 'lastUpdated not rendered in App.tsx')
+})
+test('F11: external links — links field in CheatSection type', () => {
+  assert(contentTs.includes("links?: {"), 'No links field in content.ts')
+})
+test('F11: external links — rendered in App.tsx', () => {
+  assert(appTsx.includes('activeSection?.links'), 'links not rendered in App.tsx')
+})
+test('P08: sociology sections in content.ts', () => {
+  assert(contentTs.includes("'sociology-intro'"), 'Missing sociology sections')
 })
 test('C01: ai-apps.md expanded — has image generation section', () => {
   const content = readFileSync('public/ai-apps.md', 'utf8')

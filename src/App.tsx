@@ -233,7 +233,29 @@ function App() {
 
         <main>
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h1 className="text-2xl md:text-3xl font-black tracking-tight mb-2">{activeSection?.title}</h1>
+            <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+              <h1 className="text-2xl md:text-3xl font-black tracking-tight">{activeSection?.title}</h1>
+              {activeSection?.lastUpdated && (
+                <span className="shrink-0 text-[10px] font-medium text-gray-500 border border-white/10 rounded-full px-2 py-0.5 mt-1">
+                  Updated {activeSection.lastUpdated}
+                </span>
+              )}
+            </div>
+            {activeSection?.links?.length ? (
+              <div className="flex flex-wrap gap-2 mb-3">
+                {activeSection.links.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-green-400/80 border border-green-500/20 rounded-full px-2.5 py-0.5 hover:bg-green-500/10 transition"
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            ) : null}
 
             {activeSection?.bullets?.length ? (
               <ul className="mt-4 space-y-2 text-sm text-gray-200">
