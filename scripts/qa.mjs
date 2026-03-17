@@ -164,6 +164,44 @@ test('F08: recently visited — localStorage', () => {
 test('F08: recently visited — recentItems rendered', () => {
   assert(appTsx.includes('recentItems'), 'No recentItems in App.tsx')
 })
+test('F07: full-text search — useSearchIndex hook exists', () => {
+  assert(existsSync('src/hooks/useSearchIndex.ts'), 'Missing src/hooks/useSearchIndex.ts')
+})
+test('F07: full-text search — hook used in App.tsx', () => {
+  assert(appTsx.includes('useSearchIndex'), 'useSearchIndex not used in App.tsx')
+})
+test('F07: full-text search — search results shown with snippets', () => {
+  assert(appTsx.includes('searchResults'), 'searchResults not rendered in App.tsx')
+})
+test('F04: mobile drawer — drawerOpen state', () => {
+  assert(appTsx.includes('drawerOpen'), 'No drawerOpen state in App.tsx')
+})
+test('F04: mobile drawer — Menu icon imported', () => {
+  assert(appTsx.includes('Menu'), 'No Menu icon in App.tsx')
+})
+test('F04: mobile drawer — drawer overlay rendered', () => {
+  assert(appTsx.includes('fixed inset-0'), 'No drawer overlay in App.tsx')
+})
+test('C01: ai-apps.md expanded — has image generation section', () => {
+  const content = readFileSync('public/ai-apps.md', 'utf8')
+  assert(content.includes('Image Generation') || content.includes('Image generation'), 'Missing image gen section')
+})
+test('C01: ai-apps.md expanded — has ElevenLabs', () => {
+  const content = readFileSync('public/ai-apps.md', 'utf8')
+  assert(content.includes('ElevenLabs'), 'Missing ElevenLabs')
+})
+test('W02: workflows.md has VAD steps', () => {
+  const content = readFileSync('public/workflows.md', 'utf8')
+  assert(content.includes('VAD') && content.includes('DaVinci'), 'Missing VAD workflow detail')
+})
+test('W03: workflows.md has AAD steps', () => {
+  const content = readFileSync('public/workflows.md', 'utf8')
+  assert(content.includes('AAD') && content.includes('SCAFFOLD'), 'Missing AAD workflow detail')
+})
+test('W05: workflows.md has PG daily cycle', () => {
+  const content = readFileSync('public/workflows.md', 'utf8')
+  assert(content.includes('PG') && content.includes('ProdGame'), 'Missing PG workflow detail')
+})
 
 // ─── Suite 7: Config & infra ─────────────────────────────────────────────────
 console.log('\nSuite: Config & Infrastructure')
