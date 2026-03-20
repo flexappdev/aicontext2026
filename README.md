@@ -2,71 +2,82 @@
 
 A dark-mode AI reference site — a living cheat sheet for the 2026 AI landscape.
 
-Served at `/ai/` (behind the images-pipeline server).
+---
 
-## Stack
+## Product
 
-- **React 18 + TypeScript** via Vite (SWC)
-- **Tailwind CSS** — dark `#050507` background, green accent
-- **react-markdown + remark-gfm** — renders `.md` files from `public/`
-- **lucide-react** — icons
+A single-page reference app covering the full 2026 AI stack: models, tools, workflows, and infrastructure. Built as the **Context** pillar of the 2026 ABC Goal — alongside Apps (13 sites) and Backoffice (asset pipeline).
 
-## Structure
+**Sections:** AI Apps · Models · Claude Code · Open Claw · Skills · MCPs · Workflows · Infrastructure · Sociology · Top 100 · AI History · AI People · AI Future · 2026 ABC Goal
+
+**Live at:** `/ai/` (served behind the images-pipeline server)
+
+---
+
+## UX
+
+- **Two-panel layout** — collapsible sidebar nav + main content area
+- **Dark/light mode** — toggle with Sun/Moon button, persisted in localStorage
+- **Full-text search** — instant cross-section search via `useSearchIndex` hook
+- **Keyboard nav** — `j`/`k` or arrow keys to move between sections
+- **Mobile drawer** — bottom nav drawer with overlay for small screens
+- **Quick-ref mode** — collapsible cheat-card format (bullets only)
+- **URL hash sync** — `#section-id` in URL, bookmarkable and shareable
+- **Print/PDF export** — printer button + `@media print` CSS
+- **Copy code blocks** — one-click copy via `CopyablePre` component
+- **Recently visited** — last-viewed sections tracked in localStorage
+
+---
+
+## Tech
+
+**Stack:** React 18 + TypeScript · Vite (SWC) · Tailwind CSS · react-markdown + remark-gfm · lucide-react
 
 ```
 src/
-  App.tsx          # Two-panel layout: sidebar nav + main content
-  content.ts       # Section registry — id, title, mdPath
+  App.tsx              # Two-panel layout, nav, keyboard/mobile/search logic
+  content.ts           # Section registry — id, title, mdPath, groups
   components/
     MarkdownPanel.tsx  # Fetches and renders a public/*.md file
     Footer.tsx
-    Hero.tsx        # (unused — legacy template component)
-    Features.tsx    # (unused — legacy template component)
+  hooks/
+    useSearchIndex.ts  # Full-text search index across all markdown
 
-public/            # Markdown content files (one per section)
-  overview.md
-  ai-apps.md
-  models.md
-  claude-code.md
-  openclaw.md
-  skills.md
-  mcps.md
-  playwright-mcp.md
-  firecrawl-mcp.md
-  workflows.md
-  infrastructure.md
-  abc-goal.md
-  README.md
+public/                # Markdown content files (one per section, ~30 files)
+.claude/skills/        # 32 reusable Claude Code skills
+docs/                  # Project documentation (backlog, MCP guides, skills)
+sociology/             # Source markdown for sociology sections
 ```
 
-## Sections
+**Design tokens:** `#050507` background · green accent · CSS custom properties for dark/light
 
-| ID | Title | Content |
-|----|-------|---------|
-| overview | AI Context 2026 | Bullet overview — apps, models, tools, goal |
-| ai-apps | AI Apps | Claude, ChatGPT, Gemini, Antigravity, AI Studio, Grok |
-| models | Models | Claude Opus/Sonnet 4.6, GPT-5, Gemini 2.5 Pro, Llama 4 |
-| claude-code | Claude Code (CC) | CLI, CLAUDE.md, Skills, MCPs, Subagents, Hooks |
-| openclaw | Open Claw (OC) | Local AI gateway — route to any provider |
-| skills | Skills | Reusable CC skills and invocable workflows |
-| mcps | MCPs | MCP overview and available servers |
-| mcp-playwright | MCP: Playwright | Browser automation via MCP |
-| mcp-firecrawl | MCP: Firecrawl | Web scraping/crawling via MCP |
-| workflows | Workflows | NotebookLM, VAD, AAD, AIS, PG workflows |
-| infrastructure | Infrastructure | Vercel, AWS S3, MongoDB, Tailscale, Ollama |
-| abc-goal | 2026 ABC Goal | Apps (13 sites) · Backoffice · Context |
+---
 
-## Dev
+## Flow
 
 ```bash
 npm install
 npm run dev      # http://localhost:8080/ai/
-npm run build
+npm run build    # outputs to dist/
 npm run lint
 ```
 
-## 2026 Goal: ABC
+**Content editing:** Add or edit `.md` files in `public/`, then register the section in `src/content.ts`.
 
-1. **Apps** — MSCORE, MSLISTS, MSTRAVEL across 13 sites
-2. **Backoffice** — asset pipeline, curation, generation
-3. **Context** — this site + CLAUDE.md + memory system
+**Adding a skill:** Create `.claude/skills/<name>/SKILL.md` with frontmatter (`name`, `description`) and invoke with `/name`.
+
+**CI/CD:** GitHub Actions runs lint + build on every push (`.github/workflows/ci.yml`).
+
+---
+
+## Prod
+
+- **Base path:** `/ai/` — configured in `vite.config.ts`
+- **Host:** Images-pipeline server (reverse proxy to `dist/`)
+- **Build output:** `dist/` — static files, no server required
+- **Deployment:** `npm run build` → copy `dist/` to server → served at `/ai/`
+- **SEO:** OG + Twitter meta tags in `index.html`
+
+---
+
+_See [docs/](docs/) for backlog, MCP guides, and skills reference._
