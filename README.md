@@ -2,6 +2,8 @@
 
 A dark-mode AI reference site — a living cheat sheet for the 2026 AI landscape.
 
+_Last updated: 2026-03-21_
+
 ---
 
 ## Product
