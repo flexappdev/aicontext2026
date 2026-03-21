@@ -82,4 +82,11 @@ npm run lint
 
 ---
 
-_See [docs/](docs/) for backlog, MCP guides, and skills reference._
+## Docs
+
+| Doc | Description |
+|-----|-------------|
+| [docs/BACKLOG.md](docs/BACKLOG.md) | Feature backlog — all 52 items, DO / WIP / DONE |
+| [docs/skills.md](docs/skills.md) | All 32 Claude Code skills with descriptions |
+| [docs/playwright-mcp.md](docs/playwright-mcp.md) | Playwright MCP setup + usage guide |
+| [docs/firecrawl-mcp.md](docs/firecrawl-mcp.md) | Firecrawl MCP setup + usage guide |
