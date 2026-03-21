@@ -1,6 +1,6 @@
 # Backlog — AI Context 2026
 
-_Last updated: 2026-03-17_
+_Last updated: 2026-03-21_
 
 ---
 
@@ -8,7 +8,7 @@ _Last updated: 2026-03-17_
 
 | Status | Count | SP |
 |--------|-------|-----|
-| ✅ DONE | 51 | 80 |
+| ✅ DONE | 52 | 82 |
 | 🔄 WIP | 0 | — |
 | 📋 DO | 0 | — |
 
@@ -65,6 +65,7 @@ _Last updated: 2026-03-17_
 | F06 | Dark/light mode toggle | M | 2 | low | Sun/Moon toggle, CSS vars, localStorage |
 | F09 | Print / PDF export | M | 2 | low | Printer button + @media print CSS |
 | F12 | Collapsible cheat card format | M | 2 | low | Quick-ref toggle (bullets-only mode) |
+| P09 | Claude Code Pro Tips page | M | 2 | high | `/ai/claude-code-pro-tips.md` — added 2026-03-21 |
 
 ---
 

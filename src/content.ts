@@ -33,6 +33,7 @@ export const sections: CheatSection[] = [
   { id: 'subagents', title: 'Subagents', group: 'Claude Code', mdPath: '/ai/subagents.md', lastUpdated: '2026-03-17' },
   { id: 'hooks', title: 'Hooks', group: 'Claude Code', mdPath: '/ai/hooks.md', lastUpdated: '2026-03-17' },
   { id: 'memory', title: 'Memory', group: 'Claude Code', mdPath: '/ai/memory.md', lastUpdated: '2026-03-17' },
+  { id: 'claude-code-pro-tips', title: 'CC Pro Tips', group: 'Claude Code', mdPath: '/ai/claude-code-pro-tips.md', lastUpdated: '2026-03-21', links: [{ label: 'CC Docs', url: 'https://docs.anthropic.com/en/docs/claude-code' }] },
   { id: 'openclaw', title: 'Open Claw (OC)', group: 'Tools', mdPath: '/ai/openclaw.md', links: [{ label: 'GitHub', url: 'https://github.com/flexappdev/openclaw' }] },
   { id: 'skills', title: 'Skills', group: 'Tools', mdPath: '/ai/skills.md', lastUpdated: '2026-03-17' },
   { id: 'mcps', title: 'MCPs', group: 'Tools', mdPath: '/ai/mcps.md', links: [{ label: 'MCP Docs', url: 'https://modelcontextprotocol.io' }] },
