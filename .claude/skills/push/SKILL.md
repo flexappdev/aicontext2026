@@ -20,4 +20,5 @@ Commit all current changes and push to `origin main`.
    Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
    ```
 8. Run `git push origin main`
-9. Report the result: commit hash, files changed, push status
+9. Get the remote URL with `git remote get-url origin` and derive the GitHub repo link (convert `https://github.com/org/repo.git` → `https://github.com/org/repo`)
+10. Report the result: commit hash, files changed, push status, and the **GitHub repo link**

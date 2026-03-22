@@ -8,7 +8,7 @@ _Last updated: 2026-03-21_
 
 | Status | Count | SP |
 |--------|-------|-----|
-| ✅ DONE | 52 | 82 |
+| ✅ DONE | 55 | 85 |
 | 🔄 WIP | 0 | — |
 | 📋 DO | 0 | — |
 
@@ -66,6 +66,9 @@ _Last updated: 2026-03-21_
 | F09 | Print / PDF export | M | 2 | low | Printer button + @media print CSS |
 | F12 | Collapsible cheat card format | M | 2 | low | Quick-ref toggle (bullets-only mode) |
 | P09 | Claude Code Pro Tips page | M | 2 | high | `/ai/claude-code-pro-tips.md` — added 2026-03-21 |
+| D01 | README last-updated date | S | 1 | low | Added `_Last updated: 2026-03-21_` to README |
+| D02 | README docs table with links | S | 1 | low | Docs section with links to all 4 doc files |
+| D03 | skills.md GitHub links | S | 1 | low | All 32 skills linked to SKILL.md on GitHub |
 
 ---
 
