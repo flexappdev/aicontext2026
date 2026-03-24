@@ -1,6 +1,6 @@
 # Backlog — AI Context 2026
 
-_Last updated: 2026-03-21_
+_Last updated: 2026-03-22_
 
 ---
 
@@ -8,7 +8,7 @@ _Last updated: 2026-03-21_
 
 | Status | Count | SP |
 |--------|-------|-----|
-| ✅ DONE | 55 | 85 |
+| ✅ DONE | 56 | 86 |
 | 🔄 WIP | 0 | — |
 | 📋 DO | 0 | — |
 
@@ -69,6 +69,7 @@ _Last updated: 2026-03-21_
 | D01 | README last-updated date | S | 1 | low | Added `_Last updated: 2026-03-21_` to README |
 | D02 | README docs table with links | S | 1 | low | Docs section with links to all 4 doc files |
 | D03 | skills.md GitHub links | S | 1 | low | All 32 skills linked to SKILL.md on GitHub |
+| C10 | Awesome Claude section | S | 1 | medium | `/ai/awesome-claude.md` — added 2026-03-22 from github.com/webfuse-com/awesome-claude |
 
 ---
 
@@ -86,4 +87,4 @@ _(none — backlog complete!)_
 
 ## Remaining SP
 
-**0 SP remaining. All items shipped.** 🎉
+**0 SP remaining. All items shipped.**

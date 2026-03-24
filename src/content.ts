@@ -35,6 +35,7 @@ export const sections: CheatSection[] = [
   { id: 'memory', title: 'Memory', group: 'Claude Code', mdPath: '/ai/memory.md', lastUpdated: '2026-03-17' },
   { id: 'claude-code-pro-tips', title: 'CC Pro Tips', group: 'Claude Code', mdPath: '/ai/claude-code-pro-tips.md', lastUpdated: '2026-03-21', links: [{ label: 'CC Docs', url: 'https://docs.anthropic.com/en/docs/claude-code' }] },
   { id: 'cc-current', title: 'CC: Current Best', group: 'Claude Code', mdPath: '/ai/cc-current.md', lastUpdated: '2026-03-22' },
+  { id: 'awesome-claude', title: 'Awesome Claude', group: 'Tools', mdPath: '/ai/awesome-claude.md', lastUpdated: '2026-03-22', links: [{ label: 'GitHub', url: 'https://github.com/webfuse-com/awesome-claude' }, { label: 'awesomeclaude.ai', url: 'https://awesomeclaude.ai' }] },
   { id: 'openclaw', title: 'Open Claw (OC)', group: 'Tools', mdPath: '/ai/openclaw.md', links: [{ label: 'GitHub', url: 'https://github.com/flexappdev/openclaw' }] },
   { id: 'skills', title: 'Skills', group: 'Tools', mdPath: '/ai/skills.md', lastUpdated: '2026-03-17' },
   { id: 'mcps', title: 'MCPs', group: 'Tools', mdPath: '/ai/mcps.md', links: [{ label: 'MCP Docs', url: 'https://modelcontextprotocol.io' }] },

@@ -10,7 +10,7 @@ _Last updated: 2026-03-21_
 
 A single-page reference app covering the full 2026 AI stack: models, tools, workflows, and infrastructure. Built as the **Context** pillar of the 2026 ABC Goal — alongside Apps (13 sites) and Backoffice (asset pipeline).
 
-**Sections:** AI Apps · Models · Claude Code · CC Pro Tips · Open Claw · Skills · MCPs · Workflows · Infrastructure · Sociology · Top 100 · AI History · AI People · AI Future · 2026 ABC Goal
+**Sections:** AI Apps · Models · Claude Code · CC Pro Tips · Awesome Claude · Open Claw · Skills · MCPs · Workflows · Infrastructure · Sociology · Top 100 · AI History · AI People · AI Future · 2026 ABC Goal
 
 **Live at:** `/ai/` (served behind the images-pipeline server)
 
